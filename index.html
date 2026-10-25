@@ -331,7 +331,7 @@
     <h1>Florentin Rachita</h1>
     <p class="lede">
       Mi occupo di infrastruttura ibrida (on-premise e cloud), rete e sistemi gestionali per
-      un'azienda con più sedi. Gestisco gli utenti, curo i collegamenti tra le sedi e sviluppo
+      un'azienda con sede centrale e filiale. Gestisco gli utenti, curo il collegamento tra le sedi e sviluppo
       script di automazione per semplificare il lavoro quotidiano e prevenire i problemi.
     </p>
     <div class="hero-actions">
@@ -347,11 +347,11 @@
     <div class="about-text">
       <p>
         Sono un tecnico IT e gestisco l'infrastruttura informatica di un'azienda con sede centrale
-        e più filiali. Seguo un ambiente ibrido che comprende Microsoft 365/Azure, Active Directory,
+        e una filiale. Seguo un ambiente ibrido che comprende Microsoft 365/Azure, Active Directory,
         rete e sicurezza, file server, il gestionale su AS400 e l'estrazione e analisi dei dati.
       </p>
       <p>
-        Sono il riferimento tecnico di ultimo livello per circa 130 utenti tra sede, filiali e rete vendita.
+        Sono il riferimento tecnico di ultimo livello per circa 130 utenti tra sede, filiale e rete vendita.
       </p>
       <p>
         Al lavoro sistemistico affianco lo sviluppo di piccole automazioni, tramite script e RPA,
@@ -428,9 +428,9 @@
       <h3><span class="status-dot"></span>Connessione site-to-site tra sede e filiale</h3>
       <dl>
         <dt>Problema</dt>
-        <dd>La filiale non disponeva di un accesso diretto e sicuro alle risorse del dominio aziendale (file server, stampanti, server RDP condivisi).</dd>
+        <dd>La filiale non disponeva di un accesso diretto e sicuro alle risorse del dominio aziendale (file server, stampanti, server condivisi).</dd>
         <dt>Soluzione</dt>
-        <dd>Progettazione e configurazione end-to-end del collegamento (modem → firewall → switch) con un apparato Fortinet dedicato: classe di rete separata per la filiale, routing policy su entrambi i firewall, address object e policy per raggiungere risorse esterne come l'RDP su un server condiviso.</dd>
+        <dd>Progettazione e configurazione end-to-end del collegamento tra le due sedi con apparati Fortinet: rete dedicata alla filiale, regole di instradamento e policy di accesso sui firewall di entrambe le sedi per raggiungere in modo controllato le risorse condivise.</dd>
         <dt>Risultato</dt>
         <dd>La filiale opera sulle risorse di dominio come fosse in rete locale, senza VPN lato utente, con accesso a stampante di rete e file server condivisi.</dd>
       </dl>
@@ -440,9 +440,9 @@
       <h3><span class="status-dot"></span>Monitoraggio e ripristino automatico di servizi critici</h3>
       <dl>
         <dt>Problema</dt>
-        <dd>Il controller di rete UniFi e una stampante virtuale (Laser400), ospitati su server aziendali, potevano andare offline senza preavviso, impattando Wi-Fi e stampa documentale.</dd>
+        <dd>Il controller di rete UniFi e una stampante virtuale, ospitati su server aziendali, potevano andare offline senza preavviso, impattando Wi-Fi e stampa documentale.</dd>
         <dt>Soluzione</dt>
-        <dd>Script di monitoraggio che verifica ogni 5 minuti lo stato della porta di servizio e, in caso di anomalia, riavvia automaticamente il servizio, registrando ogni evento in un log testuale.</dd>
+        <dd>Script di monitoraggio che verifica ogni 5 minuti lo stato del servizio e, in caso di anomalia, riavvia automaticamente il servizio, registrando ogni evento in un log testuale.</dd>
         <dt>Risultato</dt>
         <dd>Riduzione dei tempi di inattività e passaggio da un intervento reattivo (dopo segnalazione) a uno proattivo e automatizzato.</dd>
       </dl>
@@ -464,11 +464,11 @@
       <h3><span class="status-dot"></span>Totem reception virtuale</h3>
       <dl>
         <dt>Problema</dt>
-        <dd>L'azienda non disponeva di una segreteria/reception fissa per instradare le chiamate dei visitatori verso gli uffici competenti.</dd>
+        <dd>I visitatori avevano bisogno di un modo semplice e immediato per mettersi in contatto con gli uffici competenti.</dd>
         <dt>Soluzione</dt>
         <dd>Totem in modalità kiosk che, tramite integrazione con Microsoft Graph API, consente al visitatore di selezionare l'ufficio e avvia automaticamente una chiamata Microsoft Teams al referente diretto o a un gruppo dedicato.</dd>
         <dt>Risultato</dt>
-        <dd>Sostituisce la funzione di reception per l'accoglienza visitatori, instradando correttamente le chiamate.</dd>
+        <dd>Supporta l'accoglienza dei visitatori, instradando le chiamate verso il referente giusto.</dd>
       </dl>
     </div>
   </section>
@@ -484,11 +484,11 @@
       </div>
       <p class="job-company">Bquadro - Astidental Spa</p>
       <ul>
-        <li><strong>Cloud e infrastruttura (Microsoft 365 / NAS / Active Directory)</strong> Gestione di Microsoft 365/Azure (Exchange Online, Entra ID, SharePoint) e del dominio Active Directory per circa 130 utenti tra sede e filiale; gestione delle cartelle condivise sul NAS aziendale, con permessi per reparto e utente.</li>
-        <li><strong>Rete e sicurezza</strong> Fortinet: firewall, VPN, site-to-site sede-filiale (routing policy, address e policy verso server esterni), con FortiClient (VPN client); organizzazione della rete aziendale gestita tramite DHCP e sistema di prenotazione IP con un range di classe dedicato per ufficio; RDP su server e PC. Creazione e gestione di macchine virtuali (VirtualBox, Hyper-V, VMware); configurazione e gestione AP da controller UniFi.</li>
+        <li><strong>Cloud e infrastruttura (Microsoft 365 / NAS / Active Directory)</strong> Gestione di Microsoft 365/Azure (Exchange Online, Entra ID, SharePoint) e del dominio Active Directory per circa 130 utenti; gestione delle cartelle condivise sul NAS aziendale, con permessi per reparto e utente.</li>
+        <li><strong>Rete e sicurezza</strong> Fortinet: firewall, VPN, site-to-site sede-filiale (routing e policy di accesso), con FortiClient (VPN client); organizzazione della rete aziendale gestita tramite DHCP e sistema di prenotazione IP con un range di classe dedicato per ufficio; RDP su server e PC. Creazione e gestione di macchine virtuali (VirtualBox, Hyper-V, VMware); configurazione e gestione AP da controller UniFi.</li>
         <li><strong>Sistemi gestionali e dati (IBM Galileo / Excel / FTP)</strong> Troubleshooting su malfunzionamenti legati alle spedizioni, gestione utenze e stampe e controllo dell'esecuzione dei programmi dal terminale AS400; SQL per estrazioni, modifica, import ed export dei dati; Power Query per reportistica e indagine su anomalie (ordini, DDT, fatture); verifica dei dati inviati tramite FTP con FileZilla.</li>
         <li><strong>Automazione</strong> Script di monitoraggio con ripristino automatico di servizi critici (controller UniFi, stampante virtuale); script Python per automatizzare attività ripetitive (rinomina fatture, conversione di file); realizzazione di un totem reception in modalità kiosk tramite WebApp con chiamate Teams via Graph API; prototipo di chatbot Telegram con LLM; lettura e scrittura di file tramite RPA (UiPath).</li>
-        <li><strong>Help desk</strong> Supporto di primo e secondo livello a circa 130 utenti tra dipendenti e agenti; amministrazione dell'applicativo per la gestione ordini usato dagli agenti. Coordinamento con fornitori esterni per la risoluzione di problematiche (Qapla, Zebra, Sait, Raviola) e richiesta di licenze e servizi (Microsoft, Vodafone, Sophos).</li>
+        <li><strong>Help desk</strong> Supporto di primo e secondo livello a circa 130 utenti tra dipendenti e agenti; amministrazione dell'applicativo per la gestione ordini usato dagli agenti. Coordinamento con fornitori esterni per la risoluzione di problematiche (software gestionale, spedizioni, stampa etichette) e richiesta di licenze e servizi (Microsoft, telefonia, sicurezza).</li>
       </ul>
     </div>
 
