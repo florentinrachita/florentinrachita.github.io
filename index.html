@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio IT — Sistemi, Rete & Automazione</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBFBFA;
+    --surface: #F1F4F6;
+    --surface-2: #EAEFF2;
+    --border: #D8E0E5;
+    --text: #16222B;
+    --text-soft: #51626C;
+    --text-faint: #8396A0;
+    --accent: #1F4E5F;
+    --accent-soft: #D9E6EA;
+    --status: #3C7A5E;
+    --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #11181D;
+      --surface: #162026;
+      --surface-2: #1B2730;
+      --border: #27353E;
+      --text: #E9EEF0;
+      --text-soft: #AFC0C8;
+      --text-faint: #7C8E97;
+      --accent: #6FB3C9;
+      --accent-soft: #1C333B;
+      --status: #6FCB9F;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #11181D;
+    --surface: #162026;
+    --surface-2: #1B2730;
+    --border: #27353E;
+    --text: #E9EEF0;
+    --text-soft: #AFC0C8;
+    --text-faint: #7C8E97;
+    --accent: #6FB3C9;
+    --accent-soft: #1C333B;
+    --status: #6FCB9F;
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { max-width: 100%; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* NAV */
+  header.nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+    margin: 0; padding: 0;
+    font-size: 14.5px;
+  }
+  .nav-links a {
+    color: var(--text-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .nav-links a:hover { color: var(--text); border-color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .nav-links { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    padding: 64px 0 40px;
+  }
+  .eyebrow-line {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-faint);
+    margin: 0 0 18px;
+    letter-spacing: 0.02em;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 5vw, 42px);
+    line-height: 1.18;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    max-width: none;
+  }
+  .hero p.lede {
+    font-size: 17.5px;
+    color: var(--text-soft);
+    max-width: 58ch;
+    margin: 0 0 30px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .12s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--border); color: var(--text); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 54px 0; border-top: 1px solid var(--border); }
+  section:first-of-type { border-top: none; }
+  h2.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  p.section-sub {
+    color: var(--text-soft);
+    font-size: 15px;
+    margin: 0 0 32px;
+    max-width: 60ch;
+  }
+
+  /* ABOUT */
+  .about-text { max-width: 68ch; font-size: 16px; color: var(--text-soft); }
+  .about-text p { margin: 0 0 16px; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  /* SKILLS */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+  }
+  @media (max-width: 620px) { .skill-grid { grid-template-columns: 1fr; } }
+  .skill-group h3 {
+    font-size: 13px;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  /* PROJECTS */
+  .project {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 26px;
+    margin-bottom: 20px;
+    background: var(--surface);
+  }
+  .project h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--status);
+    display: inline-block;
+    flex: none;
+  }
+  .project dl { margin: 0; }
+  .project dt {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin-top: 14px;
+  }
+  .project dt:first-of-type { margin-top: 0; }
+  .project dd {
+    margin: 4px 0 0;
+    color: var(--text-soft);
+    font-size: 15px;
+  }
+
+  /* EXPERIENCE */
+  .job { padding-bottom: 28px; margin-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .job:last-child { border-bottom: none; margin-bottom: 0; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 6px;
+  }
+  .job-role { font-size: 16.5px; font-weight: 600; }
+  .job-period { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); }
+  .job-company { color: var(--text-soft); font-size: 14.5px; margin: 0 0 12px; }
+  .job ul { margin: 0; padding-left: 18px; color: var(--text-soft); font-size: 15px; }
+  .job li { margin-bottom: 10px; }
+  .job li strong { color: var(--text); font-weight: 600; }
+
+  /* EDUCATION */
+  .edu-item h3 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+  .edu-item p { color: var(--text-soft); font-size: 14.5px; margin: 0; }
+  .edu-list { margin: 14px 0 0; padding-left: 18px; color: var(--text-soft); font-size: 15px; }
+  .edu-list li { margin-bottom: 6px; }
+
+  /* CONTACT / FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 54px 0 calc(54px + env(safe-area-inset-bottom, 0px));
+  }
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .contact-card {
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    color: var(--text-soft);
+    min-width: 200px;
+    flex: 1 1 200px;
+  }
+  .contact-card span.label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-bottom: 4px;
+  }
+  .contact-card a { color: var(--text); text-decoration: none; }
+  .contact-card a:hover { color: var(--accent); }
+
+  /* overflow-safe wide content */
+  .scrollx { overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-mark">// portfolio-it</span>
+    <ul class="nav-links">
+      <li><a href="#chi-sono">Chi sono</a></li>
+      <li><a href="#competenze">Competenze</a></li>
+      <li><a href="#progetti">Progetti</a></li>
+      <li><a href="#esperienza">Esperienza</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <p class="eyebrow-line">Tecnico IT / Apprendista Sistemista</p>
+    <h1>Florentin Rachita</h1>
+    <p class="lede">
+      Mi occupo di infrastruttura ibrida (on-premise e cloud), rete e sistemi gestionali per
+      un'azienda con più sedi. Gestisco gli utenti, curo i collegamenti tra le sedi e sviluppo
+      script di automazione per semplificare il lavoro quotidiano e prevenire i problemi.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contatti">Contattami</a>
+      <a class="btn btn-ghost" href="#progetti">Vedi i progetti</a>
+    </div>
+
+  </section>
+
+  <section id="chi-sono">
+    <h2 class="section-title">Chi sono</h2>
+    <p class="section-sub">In breve, cosa faccio e come lavoro.</p>
+    <div class="about-text">
+      <p>
+        Sono un tecnico IT e gestisco l'infrastruttura informatica di un'azienda con sede centrale
+        e più filiali. Seguo un ambiente ibrido che comprende Microsoft 365/Azure, Active Directory,
+        rete e sicurezza, file server, il gestionale su AS400 e l'estrazione e analisi dei dati.
+      </p>
+      <p>
+        Sono il riferimento tecnico di ultimo livello per circa 130 utenti tra sede, filiali e rete vendita.
+      </p>
+      <p>
+        Al lavoro sistemistico affianco lo sviluppo di piccole automazioni, tramite script e RPA,
+        per ridurre le attività manuali e intercettare i problemi prima che arrivino agli utenti.
+      </p>
+    </div>
+  </section>
+
+  <section id="competenze">
+    <h2 class="section-title">Competenze</h2>
+    <p class="section-sub">Strumenti e aree su cui lavoro regolarmente.</p>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>Cloud &amp; Microsoft 365</h3>
+        <div class="tag-row">
+          <span class="tag">Azure (tenant)</span>
+          <span class="tag">Exchange Online</span>
+          <span class="tag">Microsoft Entra ID</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">Outlook avanzato</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Infrastruttura &amp; Identity</h3>
+        <div class="tag-row">
+          <span class="tag">Active Directory</span>
+          <span class="tag">Gestione permessi</span>
+          <span class="tag">File server / NAS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Rete &amp; Sicurezza</h3>
+        <div class="tag-row">
+          <span class="tag">Fortinet</span>
+          <span class="tag">FortiClient VPN</span>
+          <span class="tag">Site-to-site</span>
+          <span class="tag">Access Point Wi-Fi</span>
+          <span class="tag">Routing / porte</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Sistemi &amp; Dati</h3>
+        <div class="tag-row">
+          <span class="tag">AS400</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Power Query</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Automazione</h3>
+        <div class="tag-row">
+          <span class="tag">PowerShell</span>
+          <span class="tag">Python</span>
+          <span class="tag">UiPath (RPA)</span>
+          <span class="tag">Microsoft Graph API</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Help Desk &amp; Supporto</h3>
+        <div class="tag-row">
+          <span class="tag">Help desk L1/L2</span>
+          <span class="tag">Gestione ticket</span>
+          <span class="tag">Coordinamento fornitori</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="progetti">
+    <h2 class="section-title">Progetti in evidenza</h2>
+    <p class="section-sub">Problemi reali affrontati sul campo, non esercizi.</p>
+
+    <div class="project">
+      <h3><span class="status-dot"></span>Connessione site-to-site tra sede e filiale</h3>
+      <dl>
+        <dt>Problema</dt>
+        <dd>La filiale non disponeva di un accesso diretto e sicuro alle risorse del dominio aziendale (file server, stampanti, server RDP condivisi).</dd>
+        <dt>Soluzione</dt>
+        <dd>Progettazione e configurazione end-to-end del collegamento (modem → firewall → switch) con un apparato Fortinet dedicato: classe di rete separata per la filiale, routing policy su entrambi i firewall, address object e policy per raggiungere risorse esterne come l'RDP su un server condiviso.</dd>
+        <dt>Risultato</dt>
+        <dd>La filiale opera sulle risorse di dominio come fosse in rete locale, senza VPN lato utente, con accesso a stampante di rete e file server condivisi.</dd>
+      </dl>
+    </div>
+
+    <div class="project">
+      <h3><span class="status-dot"></span>Monitoraggio e ripristino automatico di servizi critici</h3>
+      <dl>
+        <dt>Problema</dt>
+        <dd>Il controller di rete UniFi e una stampante virtuale (Laser400), ospitati su server aziendali, potevano andare offline senza preavviso, impattando Wi-Fi e stampa documentale.</dd>
+        <dt>Soluzione</dt>
+        <dd>Script di monitoraggio che verifica ogni 5 minuti lo stato della porta di servizio e, in caso di anomalia, riavvia automaticamente il servizio, registrando ogni evento in un log testuale.</dd>
+        <dt>Risultato</dt>
+        <dd>Riduzione dei tempi di inattività e passaggio da un intervento reattivo (dopo segnalazione) a uno proattivo e automatizzato.</dd>
+      </dl>
+    </div>
+
+    <div class="project">
+      <h3><span class="status-dot"></span>Automazione della rinomina di documenti XML</h3>
+      <dl>
+        <dt>Problema</dt>
+        <dd>I file XML ricevuti in una cartella condivisa richiedevano una rinomina manuale basata sulla denominazione contenuta al loro interno — ripetitiva e soggetta a errore.</dd>
+        <dt>Soluzione</dt>
+        <dd>Script Python, convertito in eseguibile standalone, che legge il campo denominazione in ogni file XML e rinomina il file automaticamente, gestendo i duplicati con suffissi progressivi.</dd>
+        <dt>Risultato</dt>
+        <dd>Rinomina manuale eliminata e archiviazione documentale sempre standardizzata.</dd>
+      </dl>
+    </div>
+
+    <div class="project">
+      <h3><span class="status-dot"></span>Totem reception virtuale</h3>
+      <dl>
+        <dt>Problema</dt>
+        <dd>L'azienda non disponeva di una segreteria/reception fissa per instradare le chiamate dei visitatori verso gli uffici competenti.</dd>
+        <dt>Soluzione</dt>
+        <dd>Totem in modalità kiosk che, tramite integrazione con Microsoft Graph API, consente al visitatore di selezionare l'ufficio e avvia automaticamente una chiamata Microsoft Teams al referente diretto o a un gruppo dedicato.</dd>
+        <dt>Risultato</dt>
+        <dd>Sostituisce la funzione di reception per l'accoglienza visitatori, instradando correttamente le chiamate.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="esperienza">
+    <h2 class="section-title">Esperienza</h2>
+    <p class="section-sub">Percorso professionale.</p>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Tecnico IT / Apprendista Sistemista</span>
+        <span class="job-period">Gen 2026 – Presente</span>
+      </div>
+      <p class="job-company">Bquadro - Astidental Spa</p>
+      <ul>
+        <li><strong>Cloud e infrastruttura (Microsoft 365 / NAS / Active Directory)</strong> Gestione di Microsoft 365/Azure (Exchange Online, Entra ID, SharePoint) e del dominio Active Directory per circa 130 utenti tra sede e filiale; gestione delle cartelle condivise sul NAS aziendale, con permessi per reparto e utente.</li>
+        <li><strong>Rete e sicurezza</strong> Fortinet: firewall, VPN, site-to-site sede-filiale (routing policy, address e policy verso server esterni), con FortiClient (VPN client); organizzazione della rete aziendale gestita tramite DHCP e sistema di prenotazione IP con un range di classe dedicato per ufficio; RDP su server e PC. Creazione e gestione di macchine virtuali (VirtualBox, Hyper-V, VMware); configurazione e gestione AP da controller UniFi.</li>
+        <li><strong>Sistemi gestionali e dati (IBM Galileo / Excel / FTP)</strong> Troubleshooting su malfunzionamenti legati alle spedizioni, gestione utenze e stampe e controllo dell'esecuzione dei programmi dal terminale AS400; SQL per estrazioni, modifica, import ed export dei dati; Power Query per reportistica e indagine su anomalie (ordini, DDT, fatture); verifica dei dati inviati tramite FTP con FileZilla.</li>
+        <li><strong>Automazione</strong> Script di monitoraggio con ripristino automatico di servizi critici (controller UniFi, stampante virtuale); script Python per automatizzare attività ripetitive (rinomina fatture, conversione di file); realizzazione di un totem reception in modalità kiosk tramite WebApp con chiamate Teams via Graph API; prototipo di chatbot Telegram con LLM; lettura e scrittura di file tramite RPA (UiPath).</li>
+        <li><strong>Help desk</strong> Supporto di primo e secondo livello a circa 130 utenti tra dipendenti e agenti; amministrazione dell'applicativo per la gestione ordini usato dagli agenti. Coordinamento con fornitori esterni per la risoluzione di problematiche (Qapla, Zebra, Sait, Raviola) e richiesta di licenze e servizi (Microsoft, Vodafone, Sophos).</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Promoter</span>
+        <span class="job-period">2025</span>
+      </div>
+      <p class="job-company">OneWay Promotion Srl</p>
+      <ul>
+        <li><strong>Promozione e vendita al pubblico</strong> Accoglienza e consulenza al cliente sull'utilizzo del prodotto; raggiungimento di obiettivi di vendita mensili; reportistica giornaliera delle attività svolte e delle performance; acquisizione di competenze relazionali, comunicative e di problem solving.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="formazione">
+    <h2 class="section-title">Formazione</h2>
+    <div class="edu-item">
+      <h3>Laurea in Innovazione Sociale, Comunicazione e Nuove Tecnologie (ICT)</h3>
+      <p>Università degli Studi di Torino, 2021 - 2025 (93/110)</p>
+      <ul class="edu-list">
+        <li>Tesi di laurea: “Le origini e lo sviluppo dei LLM: uso di Copilot nel contesto aziendale”. Analisi delle sfide e dei benefici portati dall’integrazione dei LLM all’interno delle dinamiche aziendali.</li>
+        <li>Esami pratici su linguaggi di programmazione: PHP, Java, Python, HTML e CSS.</li>
+        <li>Progetti accademici di sviluppo web e software, sia individuali che in team.</li>
+        <li>Corsi incentrati sulla comunicazione digitale e sull’interazione uomo-macchina.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<footer id="contatti">
+  <div class="wrap">
+    <h2 class="section-title">Contatti</h2>
+    <p class="section-sub">Scrivimi o trovami qui.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="label">email</span>
+        <a href="mailto:florentinrachita91@gmail.com">florentinrachita91@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <span class="label">linkedin</span>
+        <a href="https://www.linkedin.com/in/florentin-rachita-827782362">linkedin.com/in/florentin-rachita-827782362</a>
+      </div>
+      <div class="contact-card">
+        <span class="label">località</span>
+        <span>Asti, Italia</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
