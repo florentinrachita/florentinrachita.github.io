@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Florentin Rachita — Tecnico IT Junior</title>
+<meta name="description" content="Portfolio di Florentin Rachita, tecnico IT junior: infrastruttura Microsoft 365/Azure, rete Fortinet, sistemi gestionali e automazione con PowerShell e Python.">
+<meta property="og:title" content="Florentin Rachita — Tecnico IT Junior">
+<meta property="og:description" content="Infrastruttura, rete e automazione: progetti, esperienza e competenze.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#16313D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16313D;
+    --ink-soft: #4C606A;
+    --teal: #1F6F8B;
+    --teal-deep: #17566C;
+    --mist: #A9D6E5;
+    --mist-bg: #E7F2F6;
+    --paper: #F5F9FA;
+    --white: #FFFFFF;
+    --line: #DCE7EB;
+    --shadow: 0 1px 2px rgba(22,49,61,.05), 0 8px 24px -12px rgba(22,49,61,.18);
+    --r-lg: 22px;
+    --r-md: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #E9F2F5;
+      --ink-soft: #A7BAC2;
+      --teal: #6FC0DB;
+      --teal-deep: #8ACDE4;
+      --mist: #2B5A6D;
+      --mist-bg: #1B3B49;
+      --paper: #0F222B;
+      --white: #15303B;
+      --line: #25434F;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -12px rgba(0,0,0,.5);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(900px 500px at 88% -5%, color-mix(in srgb, var(--mist) 45%, transparent), transparent 70%),
+      radial-gradient(700px 400px at -10% 30%, color-mix(in srgb, var(--mist) 25%, transparent), transparent 70%);
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 8px; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Navigazione a pillola ---------- */
+  .nav-shell { position: sticky; top: 14px; z-index: 50; display: flex; justify-content: center; padding: 0 12px; }
+  .nav {
+    display: flex; gap: 2px; padding: 6px; background: color-mix(in srgb, var(--white) 88%, transparent);
+    backdrop-filter: blur(12px); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow);
+    max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a {
+    text-decoration: none; font-size: .92rem; font-weight: 600; color: var(--ink);
+    padding: 9px 16px; border-radius: 999px; white-space: nowrap; transition: background .2s, color .2s;
+  }
+  .nav a:hover { background: var(--mist-bg); }
+  .nav a[aria-current="true"] { background: var(--ink); color: var(--paper); }
+
+  section { padding: 96px 0 24px; }
+  .kicker { font-size: .95rem; font-weight: 700; color: var(--teal); margin-bottom: 10px; }
+  h2 { font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.08; letter-spacing: -.03em; font-weight: 800; }
+  .section-lead { color: var(--ink-soft); max-width: 60ch; margin-top: 14px; font-size: 1.05rem; }
+  .head { margin-bottom: 36px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 40px; text-align: center; }
+  .hero .role {
+    display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: .95rem;
+    padding: 7px 16px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .hero .role i { width: 8px; height: 8px; border-radius: 50%; background: #2FB67C; box-shadow: 0 0 0 4px rgba(47,182,124,.18); }
+  .hero h1 {
+    margin: 28px auto 0; max-width: 17ch;
+    font-size: clamp(2.6rem, 7.2vw, 5.2rem); line-height: 1.0; letter-spacing: -.045em; font-weight: 800;
+  }
+  .hero .lede { margin: 26px auto 0; max-width: 56ch; font-size: 1.15rem; color: var(--ink-soft); }
+  .scope { margin: 44px auto 0; max-width: 640px; text-align: left; }
+  .scope-row { display: flex; gap: 18px; align-items: baseline; padding: 12px 0; }
+  .scope-row + .scope-row { border-top: 1px solid var(--line); }
+  .scope-row b { flex: 0 0 76px; font-size: .85rem; color: var(--ink-soft); font-weight: 600; }
+  .scope-row span { font-weight: 500; }
+  .scope-row.focus span { color: var(--teal); font-weight: 700; }
+  .actions { margin-top: 38px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; padding: 15px 26px; border-radius: 16px; font-weight: 700; font-size: 1rem;
+    text-decoration: none; border: 1px solid var(--line); background: var(--white); color: var(--teal-deep); transition: transform .15s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ---------- Chi sono ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: start; }
+  .about-text { font-size: 1.12rem; color: var(--ink); }
+  .about-text p + p { margin-top: 18px; color: var(--ink-soft); }
+  .facts { display: grid; gap: 14px; }
+  .fact { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 20px 24px; box-shadow: var(--shadow); display: flex; gap: 20px; align-items: baseline; }
+  .fact strong { font-size: 2.3rem; letter-spacing: -.04em; line-height: 1; min-width: 4.2ch; color: var(--teal); }
+  .fact span { color: var(--ink-soft); font-size: .98rem; }
+
+  /* ---------- Progetti ---------- */
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px; }
+  .chip {
+    font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; padding: 9px 18px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--white); color: var(--ink); transition: background .2s, color .2s;
+  }
+  .chip:hover { background: var(--mist-bg); }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow);
+    padding: 28px; display: flex; flex-direction: column; border-top: 4px solid var(--teal);
+  }
+  .card[hidden] { display: none; }
+  .card.wide { grid-column: 1 / -1; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .tag { font-size: .8rem; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--mist-bg); color: var(--teal-deep); }
+  .card h3 { font-size: 1.3rem; line-height: 1.25; letter-spacing: -.02em; font-weight: 800; }
+  .card .summary { margin-top: 12px; color: var(--ink-soft); }
+  details { margin-top: auto; padding-top: 20px; }
+  summary {
+    list-style: none; cursor: pointer; font-weight: 700; color: var(--teal-deep); display: inline-flex; gap: 8px; align-items: center;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--mist-bg); transition: transform .25s; }
+  details[open] summary::after { content: "–"; }
+  .detail { margin-top: 18px; display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+  .detail dt { font-size: .85rem; font-weight: 800; color: var(--teal); }
+  .detail dd { margin: 2px 0 0; font-size: .97rem; }
+
+  /* ---------- Esperienza ---------- */
+  .timeline { position: relative; display: grid; gap: 22px; padding-left: 34px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .job { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 28px; }
+  .job::before { content: ""; position: absolute; left: -34px; top: 32px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 4px solid var(--teal); }
+  .job.current::before { background: var(--teal); box-shadow: 0 0 0 5px color-mix(in srgb, var(--teal) 22%, transparent); }
+  .job time { font-weight: 700; color: var(--teal); font-size: .95rem; }
+  .job h3 { font-size: 1.35rem; letter-spacing: -.02em; font-weight: 800; margin-top: 4px; }
+  .job .org { color: var(--ink-soft); font-weight: 500; }
+  .job ul { list-style: none; padding: 0; margin-top: 18px; display: grid; gap: 14px; }
+  .job li { padding-left: 18px; position: relative; font-size: .98rem; }
+  .job li::before { content: ""; position: absolute; left: 0; top: .72em; width: 7px; height: 2px; background: var(--teal); }
+  .job li strong { color: var(--ink); font-weight: 800; }
+
+  /* ---------- Competenze ---------- */
+  .skills { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 22px; }
+  .search { display: flex; gap: 12px; align-items: center; }
+  .search input {
+    flex: 1; font: inherit; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  }
+  .search input::placeholder { color: var(--ink-soft); }
+  .skills-body { display: grid; grid-template-columns: 250px 1fr; gap: 26px; margin-top: 22px; }
+  .domains { display: flex; flex-direction: column; gap: 4px; }
+  .domain {
+    font: inherit; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    padding: 12px 14px; border-radius: 12px; border: 0; background: transparent; color: var(--ink); font-weight: 600; cursor: pointer;
+  }
+  .domain:hover { background: var(--mist-bg); }
+  .domain[aria-selected="true"] { background: var(--mist-bg); color: var(--teal-deep); }
+  .domain .n { font-size: .8rem; font-weight: 700; min-width: 26px; text-align: center; padding: 2px 8px; border-radius: 999px; background: var(--paper); color: var(--ink-soft); }
+  .panel[hidden] { display: none; }
+  .panel h3 { font-size: 1.4rem; letter-spacing: -.02em; font-weight: 800; }
+  .panel > p { color: var(--ink-soft); margin: 6px 0 18px; }
+  .skill-list { display: grid; gap: 10px; list-style: none; padding: 0; }
+  .skill-list li { border: 1px solid var(--line); border-radius: var(--r-md); padding: 13px 18px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--paper); }
+  .skill-list li[hidden] { display: none; }
+  .skill-list b { font-weight: 700; }
+  .skill-list span { color: var(--ink-soft); font-size: .9rem; }
+  .empty { color: var(--ink-soft); padding: 18px 4px; }
+
+  /* ---------- Formazione ---------- */
+  .edu { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 30px; max-width: 820px; }
+  .edu time { font-weight: 700; color: var(--teal); }
+  .edu h3 { font-size: 1.4rem; letter-spacing: -.02em; font-weight: 800; margin-top: 4px; }
+  .edu .org { color: var(--ink-soft); }
+  .edu p { margin-top: 16px; }
+  .edu ul { margin: 14px 0 0 18px; display: grid; gap: 6px; color: var(--ink-soft); }
+
+  /* ---------- Contatti ---------- */
+  .contact { padding-bottom: 80px; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .contact-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); padding: 24px; display: grid; gap: 6px; text-decoration: none; transition: transform .15s; }
+  a.contact-card:hover { transform: translateY(-3px); }
+  .contact-card small { color: var(--ink-soft); font-weight: 600; }
+  .contact-card span { font-weight: 700; overflow-wrap: anywhere; }
+  footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--ink-soft); font-size: .9rem; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .about-grid, .skills-body, .contact-grid, .projects { grid-template-columns: 1fr; }
+    .domains { flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+    .domain { white-space: nowrap; }
+    section { padding-top: 72px; }
+    .hero { padding-top: 64px; }
+    .scope-row { flex-direction: column; gap: 2px; }
+    .scope-row b { flex: none; }
+  }
+  @media (max-width: 520px) { .card, .job, .edu { padding: 22px; } .timeline { padding-left: 28px; } .job::before { left: -28px; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="nav-shell">
+  <nav class="nav" aria-label="Sezioni del sito">
+    <a href="#home">Home</a>
+    <a href="#chi-sono">Chi sono</a>
+    <a href="#progetti">Progetti</a>
+    <a href="#esperienza">Esperienza</a>
+    <a href="#competenze">Competenze</a>
+    <a href="#contatti">Contatti</a>
+  </nav>
+</div>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap">
+      <span class="role"><i aria-hidden="true"></i>Tecnico IT Junior · Asti</span>
+      <h1>Tengo in piedi i sistemi e automatizzo ciò che si ripete.</h1>
+      <p class="lede">Mi occupo di infrastruttura ibrida, rete e sistemi gestionali per un'azienda con sede centrale e filiale. Gestisco gli utenti, curo il collegamento tra le sedi e scrivo script per semplificare il lavoro quotidiano e prevenire i problemi.</p>
+
+      <div class="scope">
+        <div class="scope-row"><b>Ambiti</b><span>Cloud · Rete · Sistemi gestionali · Help desk</span></div>
+        <div class="scope-row focus"><b>Strumenti</b><span>Microsoft 365 · Active Directory · Fortinet · PowerShell · Python</span></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="#progetti">Vedi i progetti</a>
+        <a class="btn" href="#contatti">Contattami</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="chi-sono">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Chi sono</p>
+        <h2>Cosa faccio, e come lavoro.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Sono un tecnico IT e gestisco l'infrastruttura informatica di un'azienda leader nel settore odontoiatrico, con sede centrale e una filiale. Seguo un ambiente ibrido che comprende Microsoft 365/Azure, Active Directory, rete e sicurezza, file server, il gestionale su AS400 e l'estrazione e analisi dei dati.</p>
+          <p>Al lavoro sistemistico affianco lo sviluppo di piccole automazioni, tramite script e RPA, per ridurre le attività manuali e intercettare i problemi prima che arrivino agli utenti.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><strong>~130</strong><span>utenti tra sede, filiale e rete vendita di cui sono il riferimento tecnico</span></div>
+          <div class="fact"><strong>5</strong><span>progetti documentati qui sotto, nati da problemi reali</span></div>
+          <div class="fact"><strong>6</strong><span>aree di lavoro: cloud, identità, rete, gestionali, automazione e supporto</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="progetti">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Progetti</p>
+        <h2>Problemi reali, non esercizi.</h2>
+        <p class="section-lead">Per ognuno: cosa non funzionava, cosa ho fatto e cosa è cambiato.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtra i progetti">
+        <button class="chip" data-filter="tutti" aria-pressed="true">Tutti</button>
+        <button class="chip" data-filter="rete" aria-pressed="false">Rete</button>
+        <button class="chip" data-filter="automazione" aria-pressed="false">Automazione</button>
+        <button class="chip" data-filter="microsoft" aria-pressed="false">Microsoft 365</button>
+        <button class="chip" data-filter="ia" aria-pressed="false">IA</button>
+      </div>
+
+      <div class="projects">
+        <article class="card" data-cat="rete">
+          <div class="tags"><span class="tag">Rete</span><span class="tag">Fortinet</span></div>
+          <h3>Collegamento site-to-site tra sede e filiale</h3>
+          <p class="summary">Un accesso sicuro e diretto della filiale alle risorse del dominio aziendale, senza VPN per gli utenti.</p>
+          <details>
+            <summary>Mostra i dettagli</summary>
+            <dl class="detail">
+              <div><dt>Problema</dt><dd>La filiale non disponeva di un accesso diretto e sicuro alle risorse del dominio aziendale (file server, stampanti, server condivisi).</dd></div>
+              <div><dt>Soluzione</dt><dd>Progettazione e configurazione end-to-end del collegamento tra le due sedi con apparati Fortinet: rete dedicata alla filiale, regole di instradamento e policy di accesso sui firewall di entrambe le sedi per raggiungere in modo controllato le risorse condivise.</dd></div>
+              <div><dt>Risultato</dt><dd>La filiale opera sulle risorse di dominio come fosse in rete locale, senza VPN lato utente, con accesso a stampante di rete e file server condivisi.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="card" data-cat="automazione">
+          <div class="tags"><span class="tag">Automazione</span><span class="tag">Script</span></div>
+          <h3>Monitoraggio e ripristino automatico di servizi critici</h3>
+          <p class="summary">Da un intervento dopo la segnalazione a un controllo continuo che ripristina il servizio da solo.</p>
+          <details>
+            <summary>Mostra i dettagli</summary>
+            <dl class="detail">
+              <div><dt>Problema</dt><dd>Il controller di rete UniFi e una stampante virtuale, ospitati su server aziendali, potevano andare offline senza preavviso, impattando Wi-Fi e stampa documentale.</dd></div>
+              <div><dt>Soluzione</dt><dd>Script di monitoraggio che verifica ogni 5 minuti lo stato del servizio e, in caso di anomalia, riavvia automaticamente il servizio, registrando ogni evento in un log testuale.</dd></div>
+              <div><dt>Risultato</dt><dd>Riduzione dei tempi di inattività e passaggio da un intervento reattivo (dopo segnalazione) a uno proattivo e automatizzato.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="card" data-cat="automazione">
+          <div class="tags"><span class="tag">Automazione</span><span class="tag">Python</span></div>
+          <h3>Rinomina automatica di documenti XML</h3>
+          <p class="summary">Un lavoro manuale, ripetitivo e soggetto a errori, trasformato in un eseguibile che fa tutto da solo.</p>
+          <details>
+            <summary>Mostra i dettagli</summary>
+            <dl class="detail">
+              <div><dt>Problema</dt><dd>I file XML ricevuti in una cartella condivisa richiedevano una rinomina manuale basata sulla denominazione contenuta al loro interno: un'attività ripetitiva e soggetta a errore.</dd></div>
+              <div><dt>Soluzione</dt><dd>Script Python, convertito in eseguibile standalone, che legge il campo denominazione in ogni file XML e rinomina il file automaticamente, gestendo i duplicati con suffissi progressivi.</dd></div>
+              <div><dt>Risultato</dt><dd>Rinomina manuale eliminata e archiviazione documentale sempre standardizzata.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="card" data-cat="microsoft automazione">
+          <div class="tags"><span class="tag">Microsoft 365</span><span class="tag">Graph API</span></div>
+          <h3>Totem reception con chiamata Teams</h3>
+          <p class="summary">Il visitatore sceglie l'ufficio su uno schermo e la chiamata parte direttamente verso il referente giusto.</p>
+          <details>
+            <summary>Mostra i dettagli</summary>
+            <dl class="detail">
+              <div><dt>Problema</dt><dd>I visitatori avevano bisogno di un modo semplice e immediato per mettersi in contatto con gli uffici competenti.</dd></div>
+              <div><dt>Soluzione</dt><dd>Totem in modalità kiosk che, tramite integrazione con Microsoft Graph API, consente al visitatore di selezionare l'ufficio e avvia automaticamente una chiamata Microsoft Teams al referente diretto o a un gruppo dedicato.</dd></div>
+              <div><dt>Risultato</dt><dd>Supporta l'accoglienza dei visitatori, instradando le chiamate verso il referente giusto.</dd></div>
+            </dl>
+          </details>
+        </article>
+
+        <article class="card wide" data-cat="ia automazione">
+          <div class="tags"><span class="tag">IA</span><span class="tag">Python</span><span class="tag">Telegram</span></div>
+          <h3>Chatbot Telegram con LLM per cercare in un catalogo prodotti</h3>
+          <p class="summary">Un prototipo che risponde a domande su centinaia di articoli, costruito da zero in Python, con una ricerca che tiene basso il consumo di token.</p>
+          <details>
+            <summary>Mostra i dettagli</summary>
+            <dl class="detail">
+              <div><dt>Problema</dt><dd>Rispondere a domande su un catalogo di centinaia di articoli con un LLM, senza inviarlo ogni volta per intero: il limite gratuito dell'API (6.000 token al minuto) veniva superato e l'errore bloccava la richiesta. In più, un modello eseguito in locale su CPU ARM impiegava circa 30 secondi a rispondere.</dd></div>
+              <div><dt>Soluzione</dt><dd>Prima versione con Ollama e LLaMA 3.2 in locale, poi passaggio alle API Groq con LLaMA 3.3 70B. Prima di ogni chiamata, una ricerca per parole chiave con pandas filtra il catalogo CSV e restituisce al massimo 10 articoli pertinenti, aggiunti al messaggio dell'utente. Nella memoria della conversazione resta il messaggio originale, senza il blocco di catalogo, così il contesto non cresce. Ogni utente Telegram ha la propria storia, indicizzata per ID, e una whitelist di ID blocca i messaggi non autorizzati prima che arrivino al modello.</dd></div>
+              <div><dt>Risultato</dt><dd>Risposte in meno di 2 secondi contro i circa 30 del modello locale, e nessun errore sul limite di token. Il prototipo è funzionante e gestisce più utenti in modo indipendente.</dd></div>
+              <div><dt>Stack</dt><dd>Python, python-telegram-bot (asincrono), API Groq, LLaMA 3.3 70B, Ollama, pandas.</dd></div>
+              <div><dt>Prossimi passi</dt><dd>Un database vettoriale (RAG con embeddings) per cataloghi molto grandi e il deploy su un server Linux sempre attivo.</dd></div>
+            </dl>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="esperienza">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Esperienza</p>
+        <h2>Il mio percorso.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="job current">
+          <time>Gen 2026 – oggi</time>
+          <h3>Tecnico IT / Apprendista Sistemista</h3>
+          <p class="org">Bquadro - Astidental Spa</p>
+          <ul>
+            <li><strong>Cloud e infrastruttura.</strong> Gestione di Microsoft 365/Azure (Exchange Online, Entra ID, SharePoint) e del dominio Active Directory per circa 130 utenti; gestione delle cartelle condivise sul NAS aziendale, con permessi per reparto e utente.</li>
+            <li><strong>Rete e sicurezza.</strong> Fortinet: firewall, VPN, site-to-site sede-filiale (routing e policy di accesso), con FortiClient; rete aziendale gestita tramite DHCP e prenotazione degli IP con un range dedicato per ufficio; RDP su server e PC. Macchine virtuali (VirtualBox, Hyper-V, VMware); access point gestiti dal controller UniFi.</li>
+            <li><strong>Sistemi gestionali e dati.</strong> Troubleshooting su malfunzionamenti legati alle spedizioni, gestione utenze e stampe e controllo dell'esecuzione dei programmi dal terminale AS400 (IBM Galileo); SQL per estrazioni, modifica, import ed export dei dati; Power Query per reportistica e indagine su anomalie (ordini, DDT, fatture); verifica dei dati inviati tramite FTP con FileZilla.</li>
+            <li><strong>Automazione.</strong> Script di monitoraggio con ripristino automatico di servizi critici; script Python per attività ripetitive (rinomina fatture, conversione di file); totem reception in modalità kiosk con chiamate Teams via Graph API; prototipo di chatbot Telegram con LLM; lettura e scrittura di file tramite RPA (UiPath).</li>
+            <li><strong>Help desk.</strong> Supporto di primo e secondo livello a circa 130 utenti tra dipendenti e agenti; amministrazione dell'applicativo per la gestione ordini usato dagli agenti. Coordinamento con fornitori esterni per la risoluzione di problematiche (software gestionale, spedizioni, stampa etichette) e richiesta di licenze e servizi (Microsoft, telefonia, sicurezza).</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <time>2025</time>
+          <h3>Promoter</h3>
+          <p class="org">OneWay Promotion Srl</p>
+          <ul>
+            <li><strong>Promozione e vendita al pubblico.</strong> Accoglienza e consulenza al cliente sull'utilizzo del prodotto; raggiungimento di obiettivi di vendita mensili; reportistica giornaliera delle attività svolte e delle performance; acquisizione di competenze relazionali, comunicative e di problem solving.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competenze">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Competenze</p>
+        <h2>Cosa uso, raggruppato per area.</h2>
+        <p class="section-lead">Cerca uno strumento o scegli un'area: ogni voce è qualcosa che ho usato sul lavoro.</p>
+      </div>
+
+      <div class="skills">
+        <div class="search">
+          <input id="q" type="search" placeholder="Cerca uno strumento, per esempio Fortinet o Python" aria-label="Cerca nelle competenze" autocomplete="off">
+        </div>
+
+        <div class="skills-body">
+          <div class="domains" role="tablist" aria-label="Aree di competenza"></div>
+          <div id="panels">
+
+            <div class="panel" data-domain="Cloud e Microsoft 365" data-desc="Amministrazione dell'ambiente Microsoft dell'azienda.">
+              <ul class="skill-list">
+                <li><b>Azure (tenant)</b><span>amministrazione del tenant</span></li>
+                <li><b>Microsoft Entra ID</b><span>audit e revoca degli accessi da log</span></li>
+                <li><b>Exchange Online</b><span>caselle e regole di posta</span></li>
+                <li><b>SharePoint</b><span>spazi e permessi</span></li>
+                <li><b>Microsoft Teams</b><span>chiamate integrate via Graph API</span></li>
+                <li><b>Outlook avanzato</b><span>regole e configurazioni</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" data-domain="Infrastruttura e identità" data-desc="Utenti, permessi e server dell'azienda.">
+              <ul class="skill-list">
+                <li><b>Active Directory</b><span>utenze, gruppi e permessi</span></li>
+                <li><b>File server e NAS</b><span>cartelle e permessi per reparto e utente</span></li>
+                <li><b>Macchine virtuali</b><span>VirtualBox, Hyper-V, VMware</span></li>
+                <li><b>RDP</b><span>accesso remoto a server e PC</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" data-domain="Rete e sicurezza" data-desc="Collegamenti tra sedi, VPN e rete aziendale.">
+              <ul class="skill-list">
+                <li><b>Fortinet</b><span>firewall, policy e routing</span></li>
+                <li><b>VPN e FortiClient</b><span>accesso remoto degli utenti</span></li>
+                <li><b>Site-to-site</b><span>collegamento tra sede e filiale</span></li>
+                <li><b>DHCP e prenotazione IP</b><span>range dedicato per ufficio</span></li>
+                <li><b>Wi-Fi e UniFi</b><span>access point da controller</span></li>
+                <li><b>Subnet e gateway</b><span>impostazioni di rete di base</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" data-domain="Sistemi gestionali e dati" data-desc="Il gestionale aziendale e l'analisi dei dati.">
+              <ul class="skill-list">
+                <li><b>AS400 (IBM Galileo)</b><span>utenze, stampe, troubleshooting</span></li>
+                <li><b>SQL</b><span>estrazioni, modifiche, import ed export</span></li>
+                <li><b>Power Query</b><span>reportistica e analisi di anomalie</span></li>
+                <li><b>Excel</b><span>elaborazione dei dati estratti</span></li>
+                <li><b>FTP</b><span>verifica dei dati con FileZilla</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" data-domain="Automazione" data-desc="Script e processi per togliere lavoro manuale.">
+              <ul class="skill-list">
+                <li><b>PowerShell</b><span>monitoraggio e ripristino di servizi</span></li>
+                <li><b>Python</b><span>rinomina file, conversioni, eseguibili</span></li>
+                <li><b>UiPath (RPA)</b><span>lettura e scrittura di file</span></li>
+                <li><b>Microsoft Graph API</b><span>totem reception con Teams</span></li>
+                <li><b>Chatbot con LLM</b><span>prototipo su Telegram, in Python</span></li>
+                <li><b>API di LLM</b><span>Groq in cloud, Ollama in locale</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" data-domain="Help desk e supporto" data-desc="Assistenza a utenti interni e agenti sul territorio.">
+              <ul class="skill-list">
+                <li><b>Supporto di primo e secondo livello</b><span>telefono ed e-mail</span></li>
+                <li><b>Gestione dei ticket</b><span>presa in carico e chiusura</span></li>
+                <li><b>Applicativo ordini</b><span>amministrazione per gli agenti</span></li>
+                <li><b>Fornitori esterni</b><span>coordinamento e richiesta di licenze</span></li>
+              </ul>
+            </div>
+
+            <p class="empty" id="empty" hidden>Nessuno strumento trovato. Prova con un altro termine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formazione">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Formazione</p>
+        <h2>Gli studi.</h2>
+      </div>
+      <article class="edu">
+        <time>2021 – 2025</time>
+        <h3>Laurea in Innovazione Sociale, Comunicazione e Nuove Tecnologie (ICT)</h3>
+        <p class="org">Università degli Studi di Torino · 93/110</p>
+        <p>Tesi di laurea: «Le origini e lo sviluppo dei LLM: uso di Copilot nel contesto aziendale». Analisi delle sfide e dei benefici portati dall'integrazione dei LLM all'interno delle dinamiche aziendali.</p>
+        <ul>
+          <li>Esami pratici su linguaggi di programmazione: PHP, Java, Python, HTML e CSS.</li>
+          <li>Progetti accademici di sviluppo web e software, sia individuali che in team.</li>
+          <li>Corsi su comunicazione digitale e interazione uomo-macchina.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="contatti" class="contact">
+    <div class="wrap">
+      <div class="head">
+        <p class="kicker">Contatti</p>
+        <h2>Scrivimi o trovami qui.</h2>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:florentinrachita91@gmail.com"><small>Email</small><span>florentinrachita91@gmail.com</span></a>
+        <a class="contact-card" href="https://www.linkedin.com/in/florentin-rachita-827782362" target="_blank" rel="noopener"><small>LinkedIn</small><span>Florentin Rachita</span></a>
+        <div class="contact-card"><small>Località</small><span>Asti, Italia</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Florentin Rachita</div>
+</footer>
+
+<script>
+(function () {
+  /* Voce attiva nel menu mentre scorri */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function setActive(id) {
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    targets.forEach(function (t) { if (t) io.observe(t); });
+  }
+  setActive('home');
+
+  /* Filtri dei progetti */
+  var chips = document.querySelectorAll('.chip');
+  var cards = document.querySelectorAll('.projects .card');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-filter');
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      cards.forEach(function (card) {
+        var cats = card.getAttribute('data-cat').split(' ');
+        card.hidden = !(f === 'tutti' || cats.indexOf(f) !== -1);
+      });
+    });
+  });
+
+  /* Competenze: aree + ricerca */
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  var list = document.querySelector('.domains');
+  var q = document.getElementById('q');
+  var empty = document.getElementById('empty');
+  var current = 0;
+
+  panels.forEach(function (p, i) {
+    var h = document.createElement('h3'); h.textContent = p.getAttribute('data-domain');
+    var d = document.createElement('p'); d.textContent = p.getAttribute('data-desc');
+    p.insertBefore(d, p.firstChild); p.insertBefore(h, p.firstChild);
+    var b = document.createElement('button');
+    b.className = 'domain'; b.type = 'button'; b.setAttribute('role', 'tab');
+    b.innerHTML = '<span></span><span class="n"></span>';
+    b.firstChild.textContent = p.getAttribute('data-domain');
+    b.lastChild.textContent = p.querySelectorAll('li').length;
+    b.addEventListener('click', function () { q.value = ''; current = i; render(); });
+    list.appendChild(b);
+  });
+
+  function render() {
+    var term = q.value.trim().toLowerCase();
+    var buttons = list.querySelectorAll('.domain');
+    var shown = 0;
+    panels.forEach(function (p, i) {
+      var items = p.querySelectorAll('li');
+      var match = 0;
+      items.forEach(function (li) {
+        var ok = !term || li.textContent.toLowerCase().indexOf(term) !== -1;
+        li.hidden = !ok; if (ok) match++;
+      });
+      var visible = term ? match > 0 : i === current;
+      p.hidden = !visible;
+      if (visible) shown++;
+      buttons[i].setAttribute('aria-selected', (!term && i === current) ? 'true' : 'false');
+      buttons[i].lastChild.textContent = term ? match : items.length;
+    });
+    empty.hidden = shown > 0;
+  }
+  q.addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>
